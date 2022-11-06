@@ -16,6 +16,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"log"
+	"time"
 )
 
 func main() {
@@ -25,7 +26,7 @@ func main() {
 	service = NewService()
 
 	// TEST DATA
-	CreateTestData(service)
+	//CreateTestData(service)
 
 	// ROUTING
 	r := chi.NewRouter()
@@ -39,15 +40,19 @@ func main() {
 
 func CreateTestData(service Service) {
 
-	project, _ := NewProject()
+	project, _ := NewProjectWithID()
 	project.Title = "Untitled Test Project"
 
 	if err := service.CreateProject(context.Background(), project); err != nil {
 		log.Println(err)
 	}
+	for i := 1; i < 200; i++ {
 
-	for i := 1; i < 5; i++ {
-		task, _ := NewTask()
+		task, _ := NewTaskWithID()
+		task.Status = StatusDoing.String()
+		task.Priority = DegreeHigh.String()
+		task.Importance = DegreeHigh.String()
+		task.DateCreated = time.Now()
 		task.Title = fmt.Sprintf("Test Task %d", i)
 
 		if err := service.CreateTask(context.Background(), project.ID, task); err != nil {

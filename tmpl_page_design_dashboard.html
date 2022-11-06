@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html class="h-full bg-white font-inter" lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link preload href="/static/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Design - App</title>
+  </head>
+
+  <body class="h-full font-inter">
+    <!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+    <!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+    <div class="min-h-full">
+
+
+      <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+      <!-- <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+        
+      Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+      Entering: "transition-opacity ease-linear duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "transition-opacity ease-linear duration-300"
+        From: "opacity-100"
+        To: "opacity-0"
+   
+        <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+
+        <div class="fixed inset-0 z-40 flex">
+          
+        Off-canvas menu, show/hide based on off-canvas menu state.
+
+        Entering: "transition ease-in-out duration-300 transform"
+          From: "-translate-x-full"
+          To: "translate-x-0"
+        Leaving: "transition ease-in-out duration-300 transform"
+          From: "translate-x-0"
+          To: "-translate-x-full"
+     
+          <div class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-white">
+            
+          Close button, show/hide based on off-canvas menu state.
+
+          Entering: "ease-in-out duration-300"
+            From: "opacity-0"
+            To: "opacity-100"
+          Leaving: "ease-in-out duration-300"
+            From: "opacity-100"
+            To: "opacity-0"
+       
+            <div class="absolute top-0 right-0 pt-2 -mr-12">
+              <button type="button" class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <span class="sr-only">Close sidebar</span>
+                Heroicon name: outline/x-mark
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="flex items-center flex-shrink-0 px-4">
+              <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500" alt="Your Company">
+            </div>
+            <div class="flex-1 h-0 mt-5 overflow-y-auto">
+              <nav class="px-2">
+                <div class="space-y-1">
+                  Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  <a href="#" class="flex items-center px-2 py-2 text-base font-medium leading-5 text-gray-900 bg-gray-100 rounded-md group" aria-current="page">
+                    
+                  Heroicon name: outline/home
+
+                  Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
+               
+                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                    Home
+                  </a>
+
+                  <a href="#" class="flex items-center px-2 py-2 text-base font-medium leading-5 text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 group">
+                    Heroicon name: outline/bars-4
+                    <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                    </svg>
+                    My tasks
+                  </a>
+                </div>
+                <div class="mt-8">
+                  <h3 class="px-3 text-sm font-medium text-gray-500" id="mobile-teams-headline">Teams</h3>
+                  <div class="mt-1 space-y-1" role="group" aria-labelledby="mobile-teams-headline">
+                    <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                      <span class="w-2.5 h-2.5 mr-4 bg-purple-500 rounded-full" aria-hidden="true"></span>
+                      <span class="truncate">Engineering</span>
+                    </a>
+
+                    <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                      <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
+                      <span class="truncate">Human Resources</span>
+                    </a>
+
+                    <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                      <span class="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full" aria-hidden="true"></span>
+                      <span class="truncate">Customer Success</span>
+                    </a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          <div class="flex-shrink-0 w-14" aria-hidden="true">
+            Dummy element to force sidebar to shrink to fit close icon
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Static sidebar for desktop -->
+      <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pb-4">
+
+        <!-- <div class="flex items-center flex-shrink-0 px-6">
+          <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500" alt="Your Company">
+        </div> -->
+
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+        <div class="flex flex-col flex-1 h-0 mt-4 overflow-y-auto">
+
+
+
+
+
+
+
+          <!-- Sidebar Search -->
+          <div class="px-3">
+            <label for="search" class="sr-only">Search Projects</label>
+            <div class="relative mt-1 rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none" aria-hidden="true">
+                <!-- Heroicon name: mini/magnifying-glass -->
+                <svg class="w-4 h-4 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input type="text" name="search" id="search" class="block w-full border-gray-300 rounded-md pl-9 focus:border-purple-500 focus:ring-purple-500 sm:text-sm" placeholder="Search Projects">
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="px-3 mt-6">
+            <div class="space-y-1">
+              <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
+              <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group" aria-current="page">
+                <!--
+              Heroicon name: outline/home
+
+              Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
+            -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+                Home
+              </a>
+
+              <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group">
+                <!-- Heroicon name: outline/bars-4 -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                </svg>
+                My tasks
+              </a>
+            </div>
+            <hr class="my-5 border-t border-gray-200" aria-hidden="true">
+            <!-- Navigation: Projects -->
+            <div class="space-y-1">
+              <!-- New Project Button -->
+              <div class="mb-4">
+                <a href="/dashboard/new" type="button" class="items-center inline-block w-full px-4 py-2 text-sm font-medium text-center text-white bg-purple-600 border border-transparent rounded-md shadow-sm order-0 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1">New Project</a>
+              </div>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-gray-200 rounded-md" aria-current="page">
+                <!-- 
+                  Heroicon name: outline/beaker
+                                                          
+                  Current: "text-gray-500", Default: "text-gray-400"
+                -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+
+                <!-- Current: "bg-gray-50", Default: "bg-gray-200 text-gray-600" -->
+                <span class="bg-gray-50 ml-auto inline-block py-0.5 px-3 text-xs rounded-full">5</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Project Lorem, ipsum</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Project Lorem</span>
+
+                <span class="bg-gray-200 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full">19</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+
+                <span class="bg-gray-200 text-gray-600 ml-auto inline-block py-0.5 px-3 text-xs rounded-full">20+</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project dolor</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+              </a>
+
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Ipsum dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project Lorem, ipsum dolor</span>
+              </a>
+              <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900">
+                <!-- Heroicon name: outline/beaker -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <span class="truncate">Project dolor</span>
+              </a>
+            </div>
+            <!--<div class="mt-8">
+              Secondary navigation
+              <h3 class="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">Teams</h3>
+              <div class="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
+                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                  <span class="w-2.5 h-2.5 mr-4 bg-purple-500 rounded-full" aria-hidden="true"></span>
+                  <span class="truncate">Engineering</span>
+                </a>
+
+                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                  <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
+                  <span class="truncate">Human Resources</span>
+                </a>
+
+                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:bg-gray-50 hover:text-gray-900">
+                  <span class="w-2.5 h-2.5 mr-4 bg-orange-500 rounded-full" aria-hidden="true"></span>
+                  <span class="truncate">Customer Success</span>
+                </a>
+              </div>
+            </div> -->
+          </nav>
+        </div>
+
+        <!-- User account dropdown -->
+        <div class="relative inline-block px-3 text-left" x-data="{open: false}" @click.away="open = false" @keyup.escape="open = false">
+
+          <!--
+                                      Dropdown menu, show/hide based on menu state.
+                            
+                                      Entering: "transition ease-out duration-100"
+                                        From: "transform opacity-0 scale-95"
+                                        To: "transform opacity-100 scale-100"
+                                      Leaving: "transition ease-in duration-75"
+                                        From: "transform opacity-100 scale-100"
+                                        To: "transform opacity-0 scale-95"
+                                    -->
+          <div :class="{'hidden': !open}" class="absolute left-0 right-0 z-10 hidden mx-3 mb-1 origin-bottom bg-white divide-y divide-gray-200 rounded-md shadow-lg bottom-16 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
+            <div class="py-1" role="none">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-0">View profile</a>
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-1">Settings</a>
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-2">Notifications</a>
+            </div>
+            <div class="py-1" role="none">
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-3">Get desktop app</a>
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-4">Support</a>
+            </div>
+            <div class="py-1" role="none">
+              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-5">Logout</a>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <button type="button" @click="open = !open" class="group w-full rounded-md bg-gray-100 px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="options-menu-button" aria-expanded="false" aria-haspopup="true">
+              <span class="flex items-center justify-between w-full">
+                <span class="flex items-center justify-between min-w-0 space-x-3">
+                  <!-- Image Profile Avatar -->
+                  <!-- <img class="flex-shrink-0 w-10 h-10 bg-gray-300 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" alt=""> -->
+
+                  <!-- Placeholder Profile Avatar -->
+                  <!-- <span class="inline-block w-10 h-10 overflow-hidden bg-gray-100 rounded-full">
+                    <svg class="w-full h-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </span> -->
+
+                  <!-- Text Profile Avatar -->
+                  <span class="inline-flex items-center justify-center w-10 h-10 bg-red-500 rounded-full">
+                    <span class="font-medium leading-none text-white">AH</span>
+                  </span>
+
+                  <span class="flex flex-col flex-1 min-w-0">
+                    <span class="text-sm font-medium text-gray-900 truncate">Alexander Hunt</span>
+                    <span class="text-sm text-gray-500 truncate">@SirMetathyst</span>
+                  </span>
+                </span>
+                <!-- Heroicon name: mini/chevron-up-down -->
+                <svg class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <!-- Main column -->
+      <div class="flex flex-col lg:pl-64">
+        <!-- Search header -->
+        <div class="sticky top-0 z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:hidden">
+          <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
+          <button type="button" class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
+            <span class="sr-only">Open sidebar</span>
+            <!-- Heroicon name: outline/bars-3-center-left -->
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+            </svg>
+          </button>
+          <div class="flex justify-between flex-1 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-1">
+              <form class="flex w-full md:ml-0" action="#" method="GET">
+                <label for="search-field" class="sr-only">Search</label>
+                <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                  <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                    <!-- Heroicon name: mini/magnifying-glass -->
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <input id="search-field" name="search-field" class="block w-full h-full py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 border-transparent focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search">
+                </div>
+              </form>
+            </div>
+            <div class="flex items-center">
+
+
+              <!-- Profile dropdown -->
+              <!-- <div class="relative ml-3">
+                <div>
+                  <button type="button" class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  </button>
+                </div>
+
+                
+              Dropdown menu, show/hide based on menu state.
+
+              Entering: "transition ease-out duration-100"
+                From: "transform opacity-0 scale-95"
+                To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                From: "transform opacity-100 scale-100"
+                To: "transform opacity-0 scale-95"
+           
+                <div class="absolute right-0 z-10 w-48 mt-2 origin-top-right bg-white divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <div class="py-1" role="none">
+                    Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700"
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">View profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Notifications</a>
+                  </div>
+                  <div class="py-1" role="none">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">Get desktop app</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-4">Support</a>
+                  </div>
+                  <div class="py-1" role="none">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-5">Logout</a>
+                  </div>
+                </div>
+              </div> -->
+
+
+            </div>
+          </div>
+        </div>
+        <main class="flex-1">
+          <!-- Page title & actions -->
+          <div class="px-4 py-4 border-b border-gray-200 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-4 lg:pl-8">
+            <div class="flex-1 min-w-0">
+              <h1 class="text-lg font-medium leading-6 text-gray-900 sm:truncate">Project Lorem, ipsum dolor</h1>
+            </div>
+            <div class="flex mt-4 sm:mt-0 sm:ml-4">
+
+              <!-- Seatch Tasks -->
+              <!-- <div class="w-96">
+                <label for="search" class="sr-only">Search Tasks</label>
+                <div class="relative rounded-md shadow-sm">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none" aria-hidden="true">
+                    Heroicon name: mini/magnifying-glass
+                    <svg class="w-4 h-4 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <input type="text" name="search" id="search" class="block w-full border-gray-300 rounded-md pl-9 focus:border-purple-500 focus:ring-purple-500 sm:text-sm" placeholder="Search Tasks">
+                </div>
+              </div> -->
+
+              <!-- Sort Dropdown -->
+              <!-- <div class="relative sm:ml-3" x-data="{open: false}" @click.away="open = false" @keyup.escape="open = false">
+                <button type="button" @click="open = !open" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2" id="sort-menu-button" aria-expanded="false" aria-haspopup="true">
+                  Heroicon name: mini/bars-arrow-up
+                  <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 012.75 3h11.5a.75.75 0 010 1.5H2.75A.75.75 0 012 3.75zM2 7.5a.75.75 0 01.75-.75h6.365a.75.75 0 010 1.5H2.75A.75.75 0 012 7.5zM14 7a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02l-1.95-2.1v6.59a.75.75 0 01-1.5 0V9.66l-1.95 2.1a.75.75 0 11-1.1-1.02l3.25-3.5A.75.75 0 0114 7zM2 11.25a.75.75 0 01.75-.75H7A.75.75 0 017 12H2.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+                  </svg>
+                  Sort
+                  Heroicon name: mini/chevron-down
+                  <svg class="ml-2.5 -mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                Dropdown menu, show/hide based on menu state.
+                <div :class="{'hidden': !open}" class="absolute right-0 z-10 hidden w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="sort-menu-button" tabindex="-1">
+                  <div class="py-1" role="none">
+                    Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700"
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-0">Title</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-1">Priority</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-2">Importance</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-3">Date Accessed</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-4">Date Modified</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="sort-menu-item-5">Date Created</a>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Order Dropdown -->
+              <!-- <div class="relative sm:ml-3" x-data="{open: false}" @click.away="open = false" @keyup.escape="open = false">
+                <button type="button" @click="open = !open" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2" id="order-menu-button" aria-expanded="false" aria-haspopup="true">
+                  Heroicon name: mini/arrows-up-down
+                  <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2.24 6.8a.75.75 0 001.06-.04l1.95-2.1v8.59a.75.75 0 001.5 0V4.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L2.2 5.74a.75.75 0 00.04 1.06zm8 6.4a.75.75 0 00-.04 1.06l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75a.75.75 0 00-1.5 0v8.59l-1.95-2.1a.75.75 0 00-1.06-.04z" clip-rule="evenodd" />
+                  </svg>
+                  Order
+                  Heroicon name: mini/chevron-down
+                  <svg class="ml-2.5 -mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                Dropdown menu, show/hide based on menu state.
+                <div :class="{'hidden': !open}" class="absolute right-0 z-10 hidden w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="order-menu-button" tabindex="-1">
+                  <div class="py-1" role="none">
+                    Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700"
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="order-menu-item-0">Ascending</a>
+                    <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="order-menu-item-1">Descending</a>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <button type="button" class="inline-flex items-center order-1 px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm sm:order-0 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:ml-3">Share</button> -->
+              <button type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm order-0 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1 sm:ml-3">New Task</button>
+            </div>
+          </div>
+
+          <div class="hidden sm:block">
+            <div class="inline-block min-w-full align-middle border-b border-gray-200">
+
+              <table class="min-w-full border-separate" style="border-spacing: 0">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">Title</th>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">Status</th>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">Priority</th>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">Importance</th>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">Date Created</th>
+                    <th scope="col" class="sticky top-0 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+                      <span class="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white">
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-gray-400 rounded-sm hover:bg-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Don't Do</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-gray-500 rounded-sm hover:text-gray-600">
+                        None
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+
+                  <!-- More tasks ... -->
+
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-yellow-500 rounded-sm hover:text-yellow-600">
+                        Low
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-yellow-500 rounded-sm hover:text-yellow-600">
+                        Low
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-yellow-500 rounded-sm hover:text-yellow-600">
+                        Low
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px] px-2 py-1 text-xs font-bold text-white uppercase bg-blue-600 rounded-sm hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Doing</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-yellow-500 rounded-sm hover:text-yellow-600">
+                        Low
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-green-600 rounded-sm hover:bg-green-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Done</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-1 pl-4 pr-3 text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8">Lorem, ipsum dolor</td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center min-w-[96px]  px-2 py-1 text-xs font-bold text-white uppercase bg-red-600 rounded-sm hover:bg-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 my-[2px] text-white">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                        <div class="ml-1">Todo</div>
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-orange-500 rounded-sm hover:text-orange-600">
+                        Medium
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 border-b border-gray-200 whitespace-nowrap">
+                      <button class="inline-flex items-center px-2 py-1 text-sm tracking-wide text-red-500 rounded-sm hover:text-red-600">
+                        High
+                      </button>
+                    </td>
+                    <td class="px-3 py-1 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap">5 Nov 2022</td>
+                    <td class="relative py-1 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8">
+                      <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                      <a href="#" class="ml-3 text-indigo-600 hover:text-indigo-900">Delete<span class="sr-only">, Lorem, ipsum dolor</span></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>

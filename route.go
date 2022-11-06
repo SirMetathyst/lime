@@ -3,12 +3,27 @@ package main
 import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
+	"log"
 	"net/http"
+	"time"
 )
 
 func Route(r *chi.Mux, service Service) {
+
+	// APP...
+
+	// LANDING PAGE
+
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		if err := RenderLandingPage(w); err != nil {
+		if err := RenderLandingDesignPage(w); err != nil {
+			RenderInternalServerError(w, err)
+		}
+	})
+
+	// LOGIN
+
+	r.Get("/login", func(w http.ResponseWriter, r *http.Request) {
+		if err := RenderLoginDesignPage(w); err != nil {
 			RenderInternalServerError(w, err)
 		}
 	})
@@ -16,18 +31,43 @@ func Route(r *chi.Mux, service Service) {
 	// LIST PROJECTS PAGE
 	r.Get("/dashboard", func(w http.ResponseWriter, r *http.Request) {
 
-		projects, _ := service.ListProjects(r.Context())
+		projects, err := service.ListProjects(r.Context())
+		if err != nil {
+			log.Println(err)
+		}
 
-		data := ListProjectPage{Projects: projects}
-		if err := RenderListProjectPage(w, data); err != nil {
+		data := DashboardPage{Projects: projects}
+		if err := RenderDashboardPage(w, data); err != nil {
 			RenderInternalServerError(w, err)
 		}
+	})
+
+	// DASHBOARD POST FOR LOGIN TESTING
+	r.Post("/dashboard", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 	})
 
 	// NEW PROJECT PAGE
 	r.Get("/dashboard/new", func(w http.ResponseWriter, r *http.Request) {
 
-		if err := RenderNewProjectPage(w, NewProjectPage{}); err != nil {
+		redirect := r.URL.Query().Get("redirect")
+
+		projects, err := service.ListProjects(r.Context())
+		if err != nil {
+			log.Println(err)
+		}
+
+		data := NewProjectPage{
+			DashboardPage{
+				Projects: projects,
+				Page: Page{
+					QueryParams: BuildQueryParams(redirect),
+					Redirect:    redirect,
+				},
+			},
+		}
+
+		if err := RenderNewProjectPage(w, data); err != nil {
 			RenderInternalServerError(w, err)
 		}
 	})
@@ -35,39 +75,91 @@ func Route(r *chi.Mux, service Service) {
 	// SUBMIT NEW PROJECT
 	r.Post("/dashboard/new", func(w http.ResponseWriter, r *http.Request) {
 
-		// TODO: Error checking
-		r.ParseForm()
+		// todo: proper error handling
+		if err := r.ParseForm(); err != nil {
+			log.Println(err)
+		}
+
+		// todo: sanitize user input
 		formProjectTitle := r.Form.Get("project-title")
 
-		// TODO: Sanitize user input
-		newProject, _ := NewProject()
+		newProject, _ := NewProjectWithID()
 		newProject.Title = formProjectTitle
 
-		// TODO: Return to same page with error message
-		service.CreateProject(r.Context(), newProject)
+		// todo: proper error handling
+		if err := service.CreateProject(r.Context(), newProject); err != nil {
+			log.Println(err)
+		}
 
+		// failure path:
+		// ...
+		// todo: return to same page with error message if an error occurred
+		// todo: replace with new project error template or add error detail struct to template and conditionally check
+
+		// success path:
 		http.Redirect(w, r, "/dashboard", http.StatusSeeOther)
 	})
 
 	// LIST TASKS PAGE
-	r.Get("/p/{ID}", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/dashboard/p/{ID}", func(w http.ResponseWriter, r *http.Request) {
 
-		id := chi.URLParam(r, "ID")
+		projectID := chi.URLParam(r, "ID")
 
-		tasks, _ := service.ListTasks(r.Context(), id)
+		selectedProject, err := service.Project(r.Context(), projectID)
+		if err != nil {
+			log.Println(err)
+		}
 
-		data := ListTaskPage{ID: id, Tasks: tasks}
+		projects, err := service.ListProjects(r.Context())
+		if err != nil {
+			log.Println(err)
+		}
+
+		tasks, err := service.ListTasks(r.Context(), projectID)
+		if err != nil {
+			log.Println(err)
+		}
+
+		data := ListTaskPage{
+			ID:    projectID,
+			Title: selectedProject.Title,
+			DashboardPage: DashboardPage{
+				Projects:        projects,
+				SelectedProject: selectedProject,
+				Page: Page{
+					QueryParams: BuildQueryParams(fmt.Sprintf("/dashboard/p/%s", projectID)),
+					Redirect:    fmt.Sprintf("/dashboard/p/%s", projectID),
+				},
+			},
+			Tasks: tasks,
+		}
 		if err := RenderListTaskPage(w, data); err != nil {
 			RenderInternalServerError(w, err)
 		}
 	})
 
 	// NEW TASK PAGE
-	r.Get("/p/{ID}/new", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/dashboard/p/{ID}/new", func(w http.ResponseWriter, r *http.Request) {
 
-		id := chi.URLParam(r, "ID")
+		projectID := chi.URLParam(r, "ID")
 
-		data := NewTaskPage{ID: id}
+		projects, err := service.ListProjects(r.Context())
+		if err != nil {
+			log.Println(err)
+		}
+
+		selectedProject, err := service.Project(r.Context(), projectID)
+		if err != nil {
+			log.Println(err)
+		}
+
+		data := NewTaskPage{
+			ID: projectID,
+			DashboardPage: DashboardPage{
+				Projects:        projects,
+				SelectedProject: selectedProject,
+			},
+		}
 
 		if err := RenderNewTaskPage(w, data); err != nil {
 			RenderInternalServerError(w, err)
@@ -75,22 +167,42 @@ func Route(r *chi.Mux, service Service) {
 	})
 
 	// SUBMIT NEW TASK
-	r.Post("/p/{ID}/new", func(w http.ResponseWriter, r *http.Request) {
+	r.Post("/dashboard/p/{ID}/new", func(w http.ResponseWriter, r *http.Request) {
 
-		id := chi.URLParam(r, "ID")
+		projectID := chi.URLParam(r, "ID")
 
-		// TODO: Error checking
-		r.ParseForm()
+		// todo: proper error handling
+		if err := r.ParseForm(); err != nil {
+			log.Println(err)
+		}
+
+		// todo: Sanitize user input
 		formTaskTitle := r.Form.Get("task-title")
 
-		// TODO: Sanitize user input
-		newTask, _ := NewTask()
+		newTask, err := NewTaskWithID()
+		if err != nil {
+			log.Println(err)
+		}
+
+		// todo: grab *all* input from form
 		newTask.Title = formTaskTitle
+		newTask.Status = StatusDoing.String()
+		newTask.Priority = DegreeHigh.String()
+		newTask.Importance = DegreeHigh.String()
+		newTask.DateCreated = time.Now()
 
-		// TODO: Return to same page with error message
-		service.CreateTask(r.Context(), id, newTask)
+		err = service.CreateTask(r.Context(), projectID, newTask)
+		if err != nil {
+			log.Println(err)
+		}
 
-		http.Redirect(w, r, fmt.Sprintf("/p/%s", id), http.StatusSeeOther)
+		// failure path:
+		// todo: return to same page with error message
+
+		// ...
+
+		// success path:
+		http.Redirect(w, r, fmt.Sprintf("/dashboard/p/%s", projectID), http.StatusSeeOther)
 	})
 
 	//r.HandleFunc("/static/", http.StripPrefix("/static/", http.FileServer(http.FS(StaticFS))).ServeHTTP)
