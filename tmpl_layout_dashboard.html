@@ -7,7 +7,7 @@
     <link preload href="/static/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="//unpkg.com/alpinejs" defer></script>
-    <title>Design - App</title>
+    <title>Lime | Dashboard</title>
   </head>
 
   <body class="h-full font-inter">
@@ -83,7 +83,7 @@
             </div>
 
             <div class="flex items-center flex-shrink-0 px-4">
-              <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500" alt="Your Company">
+              <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500" alt="Your Company">
             </div>
             <div class="flex-1 h-0 mt-5 overflow-y-auto">
               <nav class="px-2">
@@ -113,7 +113,7 @@
                   <h3 class="px-3 text-sm font-medium text-gray-500" id="mobile-teams-headline">Teams</h3>
                   <div class="mt-1 space-y-1" role="group" aria-labelledby="mobile-teams-headline">
                     <a href="#" class="flex items-center px-3 py-2 text-base font-medium leading-5 text-gray-600 rounded-md group hover:bg-gray-50 hover:text-gray-900">
-                      <span class="w-2.5 h-2.5 mr-4 bg-purple-500 rounded-full" aria-hidden="true"></span>
+                      <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
                       <span class="truncate">Engineering</span>
                     </a>
 
@@ -142,7 +142,7 @@
       <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-gray-200 lg:bg-gray-100 lg:pb-4">
 
         <!-- <div class="flex items-center flex-shrink-0 px-6">
-          <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=purple&shade=500" alt="Your Company">
+          <img class="w-auto h-8" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500" alt="Your Company">
         </div> -->
 
         <!-- Sidebar component, swap this element with another sidebar if you like -->
@@ -164,25 +164,25 @@
                   <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <input type="text" name="search" id="search" class="block w-full border-gray-300 rounded-md pl-9 focus:border-purple-500 focus:ring-purple-500 sm:text-sm" placeholder="Search Projects">
+              <input type="text" name="search" id="search" class="block w-full border-gray-300 rounded-md pl-9 focus:border-green-500 focus:ring-green-500 sm:text-sm" placeholder="Search Projects">
             </div>
           </div>
 
           <!-- Navigation -->
           <nav class="px-3 mt-6">
-<!--            <div class="space-y-1">-->
-<!--              &lt;!&ndash; Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" &ndash;&gt;-->
-<!--              <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group" aria-current="page">-->
-<!--                &lt;!&ndash;-->
-<!--              Heroicon name: outline/home-->
+            <div class="space-y-1">
+              <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
+              <a href="{{ .BaseURL }}/dashboard" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group" aria-current="page">
+                <!--
+              Heroicon name: outline/home
 
-<!--              Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"-->
-<!--            &ndash;&gt;-->
-<!--                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">-->
-<!--                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />-->
-<!--                </svg>-->
-<!--                Home-->
-<!--              </a>-->
+              Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500"
+            -->
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+                Home
+              </a>
 
 <!--              <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-50 group">-->
 <!--                &lt;!&ndash; Heroicon name: outline/bars-4 &ndash;&gt;-->
@@ -191,28 +191,28 @@
 <!--                </svg>-->
 <!--                My tasks-->
 <!--              </a>-->
-<!--            </div>-->
-<!--            <hr class="my-5 border-t border-gray-200" aria-hidden="true">-->
+            </div>
+            <hr class="my-5 border-t border-gray-200" aria-hidden="true">
             <!-- Navigation: Projects -->
             <div class="space-y-1">
-              <!-- New Project Button -->
+              <!-- New ReadProject Button -->
               <div class="mb-4">
-                <a href="/dashboard/new{{ if .Redirect }}?redirect={{ .Redirect }}{{ end }}" type="button" class="items-center inline-block w-full px-4 py-2 text-sm font-medium text-center text-white bg-purple-600 border border-transparent rounded-md shadow-sm order-0 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:order-1">New Project</a>
+                <a href="{{ .BaseURL }}/dashboard/project/create{{ if .Redirect }}?redirect={{ .Redirect }}{{ end }}" type="button" class="items-center inline-block w-full px-4 py-2 text-sm font-medium text-center text-white bg-green-600 border border-transparent rounded-md shadow-sm order-0 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:order-1">New Project</a>
               </div>
               {{ $tmp := . }}
               {{ range $index, $element := .Projects }}
               <!-- Current: "text-gray-900 bg-gray-200", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-              <a href="{{ $tmp.BaseURL }}/dashboard/p/{{ .ID }}" class="flex items-center px-3 py-2 text-sm font-medium {{ if eq $tmp.SelectedProject.ID $element.ID }} text-gray-900 bg-gray-200 {{ else }} text-gray-600 hover:bg-gray-50 hover:text-gray-900 {{ end }} rounded-md" aria-current="page">
+              <a href="{{ $tmp.BaseURL }}/dashboard/project/{{ .ID }}" class="flex items-center px-3 py-2 text-sm font-medium {{ if eq $tmp.CurrentProject.ID $element.ID }} text-gray-900 bg-gray-200 {{ else }} text-gray-600 hover:bg-gray-50 hover:text-gray-900 {{ end }} rounded-md" aria-current="page">
                 <!-- 
                   Heroicon Name: outline/beaker                                        
                   Current: "text-gray-500", Default: "text-gray-400"
                 -->
-                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 {{ if eq $tmp.SelectedProject.ID $element.ID }} text-gray-500 {{ else }} text-gray-400 {{ end }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <svg class="flex-shrink-0 w-6 h-6 mr-3 -ml-1 {{ if eq $tmp.CurrentProject.ID $element.ID }} text-gray-500 {{ else }} text-gray-400 {{ end }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
                 </svg>
                 <span class="truncate">{{ $element.Title }}</span>
                 <!-- Current: "bg-gray-50", Default: "bg-gray-200 text-gray-600" -->
-                <span class="{{ if eq $tmp.SelectedProject.ID $element.ID }} bg-gray-50 {{ else }} bg-gray-200 text-gray-600 {{ end }} ml-auto inline-block py-0.5 px-3 text-xs rounded-full">?</span>
+                <span class="{{ if eq $tmp.CurrentProject.ID $element.ID }} bg-gray-50 {{ else }} bg-gray-200 text-gray-600 {{ end }} ml-auto inline-block py-0.5 px-3 text-xs rounded-full">?</span>
               </a>
               {{ end }}
             </div>
@@ -221,7 +221,7 @@
               <h3 class="px-3 text-sm font-medium text-gray-500" id="desktop-teams-headline">Teams</h3>
               <div class="mt-1 space-y-1" role="group" aria-labelledby="desktop-teams-headline">
                 <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md group hover:bg-gray-50 hover:text-gray-900">
-                  <span class="w-2.5 h-2.5 mr-4 bg-purple-500 rounded-full" aria-hidden="true"></span>
+                  <span class="w-2.5 h-2.5 mr-4 bg-green-500 rounded-full" aria-hidden="true"></span>
                   <span class="truncate">Engineering</span>
                 </a>
 
@@ -253,23 +253,23 @@
                                         To: "transform opacity-0 scale-95"
                                     -->
           <div :class="{'hidden': !open}" class="absolute left-0 right-0 z-10 hidden mx-3 mb-1 origin-bottom bg-white divide-y divide-gray-200 rounded-md shadow-lg bottom-16 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu-button" tabindex="-1">
-            <div class="py-1" role="none">
-              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-0">View profile</a>
-              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-1">Settings</a>
-              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-2">Notifications</a>
-            </div>
-            <div class="py-1" role="none">
-              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-3">Get desktop app</a>
-              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-4">Support</a>
-            </div>
+<!--            <div class="py-1" role="none">-->
+<!--              &lt;!&ndash; Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" &ndash;&gt;-->
+<!--              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-0">View profile</a>-->
+<!--              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-1">Settings</a>-->
+<!--              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-2">Notifications</a>-->
+<!--            </div>-->
+<!--            <div class="py-1" role="none">-->
+<!--              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-3">Get desktop app</a>-->
+<!--              <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-4">Support</a>-->
+<!--            </div>-->
             <div class="py-1" role="none">
               <a href="#" @click="open = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" tabindex="-1" id="options-menu-item-5">Logout</a>
             </div>
           </div>
 
           <div class="mt-4">
-            <button type="button" @click="open = !open" class="group w-full rounded-md bg-gray-100 px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="options-menu-button" aria-expanded="false" aria-haspopup="true">
+            <button type="button" @click="open = !open" class="group w-full rounded-md bg-gray-100 px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="options-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="flex items-center justify-between w-full">
                 <span class="flex items-center justify-between min-w-0 space-x-3">
                   <!-- Image Profile Avatar -->
@@ -283,7 +283,7 @@
                   </span> -->
 
                   <!-- Text Profile Avatar -->
-                  <span class="inline-flex items-center justify-center w-10 h-10 bg-red-500 rounded-full">
+                  <span class="inline-flex items-center justify-center w-10 h-10 bg-green-600 rounded-full">
                     <span class="font-medium leading-none text-white">AH</span>
                   </span>
 
@@ -307,7 +307,7 @@
         <!-- Search header -->
         <div class="sticky top-0 z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:hidden">
           <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
-          <button type="button" class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
+          <button type="button" class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500 lg:hidden">
             <span class="sr-only">Open sidebar</span>
             <!-- Heroicon name: outline/bars-3-center-left -->
             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -335,7 +335,7 @@
               <!-- Profile dropdown -->
               <!-- <div class="relative ml-3">
                 <div>
-                  <button type="button" class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <button type="button" class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                   </button>

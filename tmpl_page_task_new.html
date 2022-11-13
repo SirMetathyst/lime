@@ -1,0 +1,97 @@
+{{ define "main" }}
+<div class="grid h-screen place-items-center">
+  <div class="w-full max-w-4xl sm:px-6 lg:px-8">
+    <div class="pb-5 border-b border-gray-200">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">Create New Task</h3>
+      <p class="max-w-4xl mt-2 text-sm text-gray-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptates ad, autem dolore numquam cum vero est consequatur doloribus fuga debitis nam modi maiores obcaecati magni nobis distinctio minus vitae?
+      </p>
+    </div>
+    <form class="mt-8 space-y-8 divide-y divide-gray-200" method="post" action="/dashboard/project/{{ .CurrentProject.ID }}/task/create">
+
+      <div>
+
+        {{ if .Errors }}
+        <div class="p-4 rounded-md bg-red-50">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <!-- Heroicon name: mini/x-circle -->
+              <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">There {{ if gt (len .Errors) 1 }} were {{ else }} was {{ end }} {{ len .Errors }} errors with your submission</h3>
+              <div class="mt-2 text-sm text-red-700">
+                <ul role="list" class="pl-5 space-y-1 list-disc">
+                  {{ $tmp := . }}
+                  {{ range $index, $element := .Errors }}
+                  <li>{{ $element }}</li>
+                  {{ end }}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+
+        <div class="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
+
+          <div class="sm:col-span-6">
+            <label for="task-title" class="block text-sm font-medium text-gray-700">Task Title</label>
+            <div class="mt-1">
+              <input type="text" name="task-title" id="task-title" autocomplete="task-title" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+            </div>
+          </div>
+
+          <!--          <div class="sm:col-span-6">-->
+          <!--            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>-->
+          <!--            <div class="mt-1">-->
+          <!--              <textarea id="description" name="description" rows="3" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"></textarea>-->
+          <!--            </div>-->
+          <!--            <p class="mt-2 text-sm text-gray-500">Write a few sentences about the task.</p>-->
+          <!--          </div>-->
+
+          <div class="sm:col-span-2">
+
+            <label for="task-status" class="block text-sm font-medium text-gray-700">Status</label>
+            <select id="task-status" name="task-status" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option value="dont-do">Don't Do</option>
+              <option selected value="todo">Todo</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="task-priority" class="block text-sm font-medium text-gray-700">Priority</label>
+            <select id="task-priority" name="task-priority" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option selected value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="task-importance" class="block text-sm font-medium text-gray-700">Importance</label>
+            <select id="task-importance" name="task-importance" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option selected value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="pt-5">
+        <div class="flex justify-end">
+          <a href="{{ if .Redirect }}{{ .Redirect }}{{ else }}{{ .BaseURL }}/dashboard{{ end }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Cancel</a>
+          <button type="submit" class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{{ end }}

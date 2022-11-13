@@ -1,0 +1,96 @@
+{{ define "main" }}
+<div class="grid h-screen place-items-center">
+  <div class="w-full max-w-4xl sm:px-6 lg:px-8">
+    <div class="pb-5 border-b border-gray-200">
+      <h3 class="text-lg font-medium leading-6 text-gray-900">Edit Task: {{ .Task.Title }}</h3>
+      <p class="max-w-4xl mt-2 text-sm text-gray-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis voluptates ad, autem dolore numquam cum vero est consequatur doloribus fuga debitis nam modi maiores obcaecati magni nobis distinctio minus vitae?
+      </p>
+    </div>
+    <form class="mt-8 space-y-8 divide-y divide-gray-200" method="post" action="/dashboard/project/{{ .CurrentProject.ID }}/task/{{ .Task.ID }}/edit">
+      <div  class="space-y-8 divide-y divide-gray-200">
+
+        {{ if .Errors }}
+        <div class="p-4 rounded-md bg-red-50">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <!-- Heroicon name: mini/x-circle -->
+              <svg class="w-5 h-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">There {{ if gt (len .Errors) 1 }} were {{ else }} was {{ end }} {{ len .Errors }} {{ if gt (len .Errors) 1 }} errors {{ else }} error {{ end }} with your submission</h3>
+              <div class="mt-2 text-sm text-red-700">
+                <ul role="list" class="pl-5 space-y-1 list-disc">
+                  {{ $tmp := . }}
+                  {{ range $index, $element := .Errors }}
+                  <li>{{ $element }}</li>
+                  {{ end }}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+
+        <div class="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
+
+          <div class="sm:col-span-6">
+            <label for="task-title" class="block text-sm font-medium text-gray-700">Task Title</label>
+            <div class="mt-1">
+              <input type="text" name="task-title" id="task-title" autocomplete="task-title" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm" value="{{ .TargetTask.Title }}">
+            </div>
+          </div>
+
+          <!--          <div class="sm:col-span-6">-->
+          <!--            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>-->
+          <!--            <div class="mt-1">-->
+          <!--              <textarea id="description" name="description" rows="3" class="block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"></textarea>-->
+          <!--            </div>-->
+          <!--            <p class="mt-2 text-sm text-gray-500">Write a few sentences about the task.</p>-->
+          <!--          </div>-->
+
+          <div class="sm:col-span-2">
+            <label for="task-status" class="block text-sm font-medium text-gray-700">Status</label>
+            <select id="task-status" name="task-status" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option {{ if eq .Task.Status "dont-do" }} selected {{ end }} value="dont-do">Don't Do</option>
+              <option {{ if eq .Task.Status "todo" }} selected {{ end }} value="todo">Todo</option>
+              <option {{ if eq .Task.Status "doing" }} selected {{ end }} value="doing">Doing</option>
+              <option {{ if eq .Task.Status "done" }} selected {{ end }} value="done">Done</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="task-priority" class="block text-sm font-medium text-gray-700">Priority</label>
+            <select id="task-priority" name="task-priority" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option {{ if eq .Task.Priority "high" }} selected {{ end }} value="high">High</option>
+              <option {{ if eq .Task.Priority "medium" }} selected {{ end }} value="medium">Medium</option>
+              <option {{ if eq .Task.Priority "low" }} selected {{ end }} value="low">Low</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label for="task-importance" class="block text-sm font-medium text-gray-700">Importance</label>
+            <select id="task-importance" name="task-importance" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-green-500 focus:outline-none focus:ring-green-500 sm:text-sm">
+              <option {{ if eq .Task.Importance "high" }} selected {{ end }} value="high">High</option>
+              <option {{ if eq .Task.Importance "medium" }} selected {{ end }} value="medium">Medium</option>
+              <option {{ if eq .Task.Importance "low" }} selected {{ end }} value="low">Low</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="pt-5">
+          <div class="flex justify-end">
+            <div class="mx-auto w-full">
+              <a href="/dashboard/project/{{ .CurrentProject.ID }}/{{ .Task.ID }}/delete-confirm" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:red focus:ring-offset-2">Delete</a>
+            </div>
+            <a href="{{ if .Redirect }}{{ .Redirect }}{{ else }}{{ .BaseURL }}/dashboard{{ end }}" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Cancel</a>
+            <button type="submit" class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Update</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+{{ end }}
