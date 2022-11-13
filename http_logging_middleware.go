@@ -39,6 +39,8 @@ func HTTPLoggingMiddleware(logger log.Logger) func(next http.Handler) http.Handl
 	}
 }
 
+// Source: from chi logging middleware
+
 // NewWrapResponseWriter wraps an http.ResponseWriter, returning a proxy that allows you to
 // hook into various parts of the response process.
 func NewWrapResponseWriter(w http.ResponseWriter, protoMajor int) WrapResponseWriter {
