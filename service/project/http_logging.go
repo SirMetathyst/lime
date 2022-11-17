@@ -1,4 +1,4 @@
-package main
+package project
 
 import (
 	"bufio"
@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func HTTPLoggingMiddleware(logger log.Logger) func(next http.Handler) http.Handler {
+func NewHTTPLoggingMiddleware(logger log.Logger) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 

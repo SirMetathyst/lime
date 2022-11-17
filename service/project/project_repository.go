@@ -1,4 +1,4 @@
-package main
+package project
 
 import (
 	"context"
@@ -14,15 +14,15 @@ type ProjectRepository interface {
 	ListProjects(ctx context.Context) ([]Project, error)
 }
 
-type StdInMemoryMapProjectRepository struct {
-	Project map[string]Project
+type projectRepository struct {
+	project map[string]Project
 }
 
-func NewInMemoryMapProjectRepository() (ProjectRepository, error) {
-	return &StdInMemoryMapProjectRepository{Project: map[string]Project{}}, nil
+func NewProjectRepository() (ProjectRepository, error) {
+	return &projectRepository{project: map[string]Project{}}, nil
 }
 
-func (s *StdInMemoryMapProjectRepository) CreateProject(ctx context.Context, project Project) (string, error) {
+func (s *projectRepository) CreateProject(ctx context.Context, project Project) (string, error) {
 
 	id, err := generateIDWhenNotGiven(project.ID)
 	if err != nil {
@@ -34,40 +34,40 @@ func (s *StdInMemoryMapProjectRepository) CreateProject(ctx context.Context, pro
 		return id, errors.New("repository[create-project]: project found")
 	}
 
-	s.Project[project.ID] = project
+	s.project[project.ID] = project
 
 	return id, nil
 }
 
-func (s *StdInMemoryMapProjectRepository) ReadProject(ctx context.Context, projectID string) (Project, error) {
+func (s *projectRepository) ReadProject(ctx context.Context, projectID string) (Project, error) {
 
-	if project, ok := s.Project[projectID]; ok {
+	if project, ok := s.project[projectID]; ok {
 		return project, nil
 	}
 
 	return Project{}, errors.New("repository[project]: project not found")
 }
 
-func (s *StdInMemoryMapProjectRepository) UpdateProject(ctx context.Context, project Project) error {
+func (s *projectRepository) UpdateProject(ctx context.Context, project Project) error {
 
-	if _, ok := s.Project[project.ID]; ok {
-		s.Project[project.ID] = project
+	if _, ok := s.project[project.ID]; ok {
+		s.project[project.ID] = project
 		return nil
 	}
 
 	return errors.New("repository[update-project]: project not found")
 }
 
-func (s *StdInMemoryMapProjectRepository) DeleteProject(ctx context.Context, projectID string) error {
+func (s *projectRepository) DeleteProject(ctx context.Context, projectID string) error {
 
-	delete(s.Project, projectID)
+	delete(s.project, projectID)
 
 	return nil
 }
 
-func (s *StdInMemoryMapProjectRepository) ListProjects(ctx context.Context) (projects []Project, err error) {
+func (s *projectRepository) ListProjects(ctx context.Context) (projects []Project, err error) {
 
-	for _, v := range s.Project {
+	for _, v := range s.project {
 		projects = append(projects, v)
 	}
 

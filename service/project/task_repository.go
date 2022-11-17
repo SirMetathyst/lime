@@ -1,4 +1,4 @@
-package main
+package project
 
 import (
 	"context"
@@ -15,15 +15,15 @@ type TaskRepository interface {
 	ListTasks(ctx context.Context, projectID string) ([]Task, error)
 }
 
-type InMemoryMapTaskRepository struct {
-	Task map[string][]Task
+type taskRepository struct {
+	task map[string][]Task
 }
 
-func NewInMemoryMapTaskRepository() (TaskRepository, error) {
-	return &InMemoryMapTaskRepository{Task: map[string][]Task{}}, nil
+func NewTaskRepository() (TaskRepository, error) {
+	return &taskRepository{task: map[string][]Task{}}, nil
 }
 
-func (s *InMemoryMapTaskRepository) CreateTask(ctx context.Context, projectID string, task Task) (string, error) {
+func (s *taskRepository) CreateTask(ctx context.Context, projectID string, task Task) (string, error) {
 
 	id, err := generateIDWhenNotGiven(task.ID)
 	if err != nil {
@@ -36,14 +36,14 @@ func (s *InMemoryMapTaskRepository) CreateTask(ctx context.Context, projectID st
 		return "", errors.New("repository[create-task]: task found")
 	}
 
-	s.Task[projectID] = append(s.Task[projectID], task)
+	s.task[projectID] = append(s.task[projectID], task)
 
 	return id, nil
 }
 
-func (s *InMemoryMapTaskRepository) ReadTask(ctx context.Context, projectID string, taskID string) (Task, error) {
+func (s *taskRepository) ReadTask(ctx context.Context, projectID string, taskID string) (Task, error) {
 
-	for _, currentTask := range s.Task[projectID] {
+	for _, currentTask := range s.task[projectID] {
 		if currentTask.ID == taskID {
 			return currentTask, nil
 		}
@@ -52,26 +52,26 @@ func (s *InMemoryMapTaskRepository) ReadTask(ctx context.Context, projectID stri
 	return Task{}, errors.New("repository[read-task]: task not found")
 }
 
-func (s *InMemoryMapTaskRepository) UpdateTask(ctx context.Context, projectID string, task Task) error {
+func (s *taskRepository) UpdateTask(ctx context.Context, projectID string, task Task) error {
 
 	if _, err := s.ReadTask(ctx, projectID, task.ID); err != nil {
 		return errors.New("repository[update-task]: task not found")
 	}
 
-	for index, currentTask := range s.Task[projectID] {
+	for index, currentTask := range s.task[projectID] {
 		if currentTask.ID == task.ID {
-			s.Task[projectID][index] = task
+			s.task[projectID][index] = task
 		}
 	}
 
 	return nil
 }
 
-func (s *InMemoryMapTaskRepository) DeleteTask(ctx context.Context, projectID string, taskID string) error {
+func (s *taskRepository) DeleteTask(ctx context.Context, projectID string, taskID string) error {
 
-	for index, task := range s.Task[projectID] {
+	for index, task := range s.task[projectID] {
 		if task.ID == taskID {
-			s.Task[projectID] = append(s.Task[projectID][:index], s.Task[projectID][index+1:]...)
+			s.task[projectID] = append(s.task[projectID][:index], s.task[projectID][index+1:]...)
 			return nil
 		}
 	}
@@ -79,16 +79,16 @@ func (s *InMemoryMapTaskRepository) DeleteTask(ctx context.Context, projectID st
 	return errors.New("repository[delete-task]: task not found")
 }
 
-func (s *InMemoryMapTaskRepository) DeleteTasks(ctx context.Context, projectID string) error {
+func (s *taskRepository) DeleteTasks(ctx context.Context, projectID string) error {
 
-	delete(s.Task, projectID)
+	delete(s.task, projectID)
 
 	return nil
 }
 
-func (s *InMemoryMapTaskRepository) ListTasks(ctx context.Context, projectID string) (tasks []Task, err error) {
+func (s *taskRepository) ListTasks(ctx context.Context, projectID string) (tasks []Task, err error) {
 
-	for _, currentTask := range s.Task[projectID] {
+	for _, currentTask := range s.task[projectID] {
 		tasks = append(tasks, currentTask)
 	}
 
